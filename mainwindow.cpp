@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     setWindowTitle("MFA501 Assessment 2A");
-    // Buton bağlantılarını yap
+
     connect(ui->createMatrixButton, SIGNAL(clicked(bool)), this, SLOT(on_createMatrixButton_clicked()));
     connect(ui->createZeroMatrix, SIGNAL(clicked(bool)), this, SLOT(on_createZeroMatrix_clicked()));
     connect(ui->createUnitMatrix, SIGNAL(clicked(bool)), this, SLOT(on_createUnitMatrix_clicked()));
@@ -26,7 +26,7 @@ void MainWindow::recreate_matrix(void){
     matrixWidget = new QTableWidget(n, n, this);
     matrixWidget->setEditTriggers(QAbstractItemView::AllEditTriggers);
     if(n < 8){
-        matrixWidget->setFixedSize(50 * n + 40, 50 * n + 40); //dynamic widget
+        matrixWidget->setFixedSize(50 * n + 40, 50 * n + 40); //make a dynamic widget size
     }
     else{
         matrixWidget->setFixedSize(390, 390);
@@ -34,7 +34,7 @@ void MainWindow::recreate_matrix(void){
 
     for (int i = 0; i < n; i++) {
             matrixWidget->setColumnWidth(i, 50); // column width
-            matrixWidget->setRowHeight(i, 50);   // column height
+            matrixWidget->setRowHeight(i, 50);   // row height
     }
     matrixWidget->setParent(this);
     matrixWidget->move(20, 150);
@@ -121,43 +121,39 @@ void MainWindow::on_createZeroMatrix_clicked()
 
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
-            matrixWidget->setItem(i, j, new QTableWidgetItem("0")); // Boş hücre oluştur
+            matrixWidget->setItem(i, j, new QTableWidgetItem("0"));
         }
     }
 }
-
-
 void MainWindow::on_createMatrixButton_clicked()
 {
-    int n = ui->spinBox->value(); // Kullanıcının girdiği matris boyutu
+    int n = ui->spinBox->value(); // dimension of the matrix
 
-    // Önceki tabloyu temizle
+    //delete the past matrix and recreate
     if (matrixWidget) {
         delete matrixWidget;
         matrixWidget = nullptr;
     }
 
-    // Yeni QTableWidget oluştur
     matrixWidget = new QTableWidget(n, n, this);
     matrixWidget->setEditTriggers(QAbstractItemView::AllEditTriggers);
     if(n < 8){
-        matrixWidget->setFixedSize(50 * n + 40, 50 * n + 40); // Matrisin boyutunu dinamik ayarla
+        matrixWidget->setFixedSize(50 * n + 40, 50 * n + 40); //make a dynamic widget size
     }
     else{
-        matrixWidget->setFixedSize(390, 390); // Matrisin boyutunu dinamik ayarla
+        matrixWidget->setFixedSize(390, 390); //constant size for matrices bigger than 7x7
     }
 
     for (int i = 0; i < n; i++) {
-            matrixWidget->setColumnWidth(i, 50); // Sütun genişliği 50 piksel
-            matrixWidget->setRowHeight(i, 50);   // Satır yüksekliği 50 piksel
+            matrixWidget->setColumnWidth(i, 50);
+            matrixWidget->setRowHeight(i, 50);
     }
-    // Ana pencerenin içine belirli bir konuma koy
     matrixWidget->setParent(this);
-    matrixWidget->move(20, 150); // X=50, Y=100 konumuna yerleştir
+    matrixWidget->move(20, 150); //position of the matrix
     matrixWidget->show();
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            matrixWidget->setItem(i, j, new QTableWidgetItem(" ")); // Boş hücre oluştur
+            matrixWidget->setItem(i, j, new QTableWidgetItem(" ")); // create empty cells
         }
     }
 }
