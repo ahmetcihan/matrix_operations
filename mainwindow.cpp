@@ -12,63 +12,113 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->createMatrixButton, SIGNAL(clicked(bool)), this, SLOT(on_createMatrixButton_clicked()));
     connect(ui->createZeroMatrix, SIGNAL(clicked(bool)), this, SLOT(on_createZeroMatrix_clicked()));
     connect(ui->createUnitMatrix, SIGNAL(clicked(bool)), this, SLOT(on_createUnitMatrix_clicked()));
+    connect(ui->createUpperTriangularMatrix, SIGNAL(clicked(bool)), this, SLOT(on_createUpperTriangularMatrix_clicked()));
+    connect(ui->createLowerTriangularMatrix, SIGNAL(clicked(bool)), this, SLOT(on_createLowerTriangularMatrix_clicked()));
+    connect(ui->createRandomMatrix, SIGNAL(clicked(bool)), this, SLOT(on_createRandomMatrix_clicked()));
+    connect(ui->calculateDeterminant, SIGNAL(clicked(bool)), this, SLOT(on_calculateDeterminant_clicked()));
+}
+void MainWindow::recreate_matrix(void){
+    if (matrixWidget) {
+        delete matrixWidget;    //If matrix widget is created then delete and recreate it
+    }
+    int n = ui->spinBox->value();
+
+    matrixWidget = new QTableWidget(n, n, this);
+    matrixWidget->setEditTriggers(QAbstractItemView::AllEditTriggers);
+    if(n < 8){
+        matrixWidget->setFixedSize(50 * n + 40, 50 * n + 40); //dynamic widget
+    }
+    else{
+        matrixWidget->setFixedSize(390, 390);
+    }
+
+    for (int i = 0; i < n; i++) {
+            matrixWidget->setColumnWidth(i, 50); // column width
+            matrixWidget->setRowHeight(i, 50);   // column height
+    }
+    matrixWidget->setParent(this);
+    matrixWidget->move(20, 150);
+    matrixWidget->show();
+}
+void MainWindow::on_calculateDeterminant_clicked()
+{
 
 }
-
-MainWindow::~MainWindow()
+void MainWindow::on_createRandomMatrix_clicked()
 {
-    delete ui;
+    recreate_matrix();
+    int n = ui->spinBox->value();
+    int rows = n;
+    int cols = n;
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            int randomValue = QRandomGenerator::global()->bounded(-9999, 9999);
+            matrixWidget->setItem(i, j, new QTableWidgetItem(QString::number(randomValue)));
+        }
+    }
+}
+void MainWindow::on_createUpperTriangularMatrix_clicked()
+{
+    recreate_matrix();
+    int n = ui->spinBox->value();
+    int rows = n;
+    int cols = n;
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if(i <= j){
+                matrixWidget->setItem(i, j, new QTableWidgetItem("1"));
+            }
+            else{
+                matrixWidget->setItem(i, j, new QTableWidgetItem("0"));
+            }
+        }
+    }
+}
+void MainWindow::on_createLowerTriangularMatrix_clicked()
+{
+    recreate_matrix();
+    int n = ui->spinBox->value();
+    int rows = n;
+    int cols = n;
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if(i >= j){
+                matrixWidget->setItem(i, j, new QTableWidgetItem("1"));
+            }
+            else{
+                matrixWidget->setItem(i, j, new QTableWidgetItem("0"));
+            }
+        }
+    }
 }
 void MainWindow::on_createUnitMatrix_clicked()
 {
-    if (!matrixWidget) {
-        qDebug() << "buraya girdi 1";
-        return;
-    }
-    qDebug() << "buraya girdi 2";
-    int rowCount = matrixWidget->rowCount();
-    int colCount = matrixWidget->columnCount();
+    recreate_matrix();
+    int n = ui->spinBox->value();
+    int rows = n;
+    int cols = n;
 
-    qDebug() << "row" << rowCount << ", column" << colCount;
-
-    for (int i = 0; i < rowCount; i++) {
-        for (int j = 0; j < colCount; j++) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
             if(i == j){
-                matrixWidget->item(i, j)->setText("1");
+                matrixWidget->setItem(i, j, new QTableWidgetItem("1"));
             }
             else{
-                matrixWidget->item(i, j)->setText("0");
+                matrixWidget->setItem(i, j, new QTableWidgetItem("0"));
             }
-            qDebug() << "i" << i << ", j" << j;
         }
     }
 }
 void MainWindow::on_createZeroMatrix_clicked()
 {
-    if (matrixWidget) {
-        delete matrixWidget;  // Önce eski widget'ı sil
-    }
-    int n = ui->spinBox->value(); // Kullanıcının girdiği matris boyutu
-
+    recreate_matrix();
+    int n = ui->spinBox->value();
     int rows = n;
     int cols = n;
-    matrixWidget = new QTableWidget(rows, cols, this);
-    matrixWidget->setEditTriggers(QAbstractItemView::AllEditTriggers);
-    if(n < 8){
-        matrixWidget->setFixedSize(50 * n + 40, 50 * n + 40); // Matrisin boyutunu dinamik ayarla
-    }
-    else{
-        matrixWidget->setFixedSize(390, 390); // Matrisin boyutunu dinamik ayarla
-    }
 
-    for (int i = 0; i < n; i++) {
-            matrixWidget->setColumnWidth(i, 50); // Sütun genişliği 50 piksel
-            matrixWidget->setRowHeight(i, 50);   // Satır yüksekliği 50 piksel
-    }
-    matrixWidget->setParent(this);
-    matrixWidget->move(20, 150); // X=50, Y=100 konumuna yerleştir
-    matrixWidget->show();
-    // Hücreleri oluştur
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             matrixWidget->setItem(i, j, new QTableWidgetItem("0")); // Boş hücre oluştur
@@ -110,4 +160,8 @@ void MainWindow::on_createMatrixButton_clicked()
             matrixWidget->setItem(i, j, new QTableWidgetItem(" ")); // Boş hücre oluştur
         }
     }
+}
+MainWindow::~MainWindow()
+{
+    delete ui;
 }

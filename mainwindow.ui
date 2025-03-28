@@ -19,7 +19,7 @@
      <rect>
       <x>20</x>
       <y>30</y>
-      <width>271</width>
+      <width>41</width>
       <height>40</height>
      </rect>
     </property>
@@ -29,13 +29,13 @@
      </font>
     </property>
     <property name="text">
-     <string>For a nxn matrix, n is</string>
+     <string>n =</string>
     </property>
    </widget>
    <widget class="QSpinBox" name="spinBox">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>80</x>
       <y>30</y>
       <width>71</width>
       <height>40</height>
@@ -65,7 +65,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Create MATRIX Layout</string>
+     <string>Create nxn MATRIX Layout</string>
     </property>
    </widget>
    <widget class="QPushButton" name="createZeroMatrix">
@@ -79,11 +79,11 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>18</pointsize>
+      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Create ZERO Matrix</string>
+     <string>Generate ZERO Matrix</string>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -110,11 +110,86 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>18</pointsize>
+      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Create UNIT Matrix</string>
+     <string>Generate UNIT Matrix</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="createUpperTriangularMatrix">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>130</y>
+      <width>350</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Generate a UPPER TRIANGULAR
+Matrix</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="createLowerTriangularMatrix">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>200</y>
+      <width>350</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Generate a LOWER TRIANGULAR
+Matrix</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="createRandomMatrix">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>270</y>
+      <width>350</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Generate a Random
+Matrix</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="calculateDeterminant">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>340</y>
+      <width>350</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Calculate Determinant</string>
     </property>
    </widget>
   </widget>

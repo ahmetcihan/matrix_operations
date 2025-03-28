@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QTableWidget>
 #include <QDebug>
+#include <QRandomGenerator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,6 +22,12 @@ private slots:
     void on_createMatrixButton_clicked(); // Buton tıklanınca çalışacak fonksiyon
     void on_createZeroMatrix_clicked();
     void on_createUnitMatrix_clicked();
+    void on_createUpperTriangularMatrix_clicked();
+    void on_createLowerTriangularMatrix_clicked();
+    void on_createRandomMatrix_clicked();
+    void on_calculateDeterminant_clicked();
+
+    void recreate_matrix(void);
 
 private:
     Ui::MainWindow *ui;
