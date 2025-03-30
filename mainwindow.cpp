@@ -16,8 +16,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->createLowerTriangularMatrix, SIGNAL(clicked(bool)), this, SLOT(on_createLowerTriangularMatrix_clicked()));
     connect(ui->createRandomMatrix, SIGNAL(clicked(bool)), this, SLOT(on_createRandomMatrix_clicked()));
     connect(ui->calculateDeterminant, SIGNAL(clicked(bool)), this, SLOT(on_calculateDeterminant_clicked()));
+    connect(ui->calculateDeterminant, SIGNAL(clicked(bool)), this, SLOT(calculateDeterminant()));
 }
-void MainWindow::recreate_matrix(void){
+void MainWindow::recreateMatrix(void){
     if (matrixWidget) {
         delete matrixWidget;    //If matrix widget is created then delete and recreate it
     }
@@ -46,7 +47,7 @@ void MainWindow::on_calculateDeterminant_clicked()
 }
 void MainWindow::on_createRandomMatrix_clicked()
 {
-    recreate_matrix();
+    recreateMatrix();
     int n = ui->spinBox->value();
     int rows = n;
     int cols = n;
@@ -60,7 +61,7 @@ void MainWindow::on_createRandomMatrix_clicked()
 }
 void MainWindow::on_createUpperTriangularMatrix_clicked()
 {
-    recreate_matrix();
+    recreateMatrix();
     int n = ui->spinBox->value();
     int rows = n;
     int cols = n;
@@ -78,7 +79,7 @@ void MainWindow::on_createUpperTriangularMatrix_clicked()
 }
 void MainWindow::on_createLowerTriangularMatrix_clicked()
 {
-    recreate_matrix();
+    recreateMatrix();
     int n = ui->spinBox->value();
     int rows = n;
     int cols = n;
@@ -96,7 +97,7 @@ void MainWindow::on_createLowerTriangularMatrix_clicked()
 }
 void MainWindow::on_createUnitMatrix_clicked()
 {
-    recreate_matrix();
+    recreateMatrix();
     int n = ui->spinBox->value();
     int rows = n;
     int cols = n;
@@ -114,7 +115,7 @@ void MainWindow::on_createUnitMatrix_clicked()
 }
 void MainWindow::on_createZeroMatrix_clicked()
 {
-    recreate_matrix();
+    recreateMatrix();
     int n = ui->spinBox->value();
     int rows = n;
     int cols = n;

@@ -3,8 +3,11 @@
 
 #include <QMainWindow>
 #include <QTableWidget>
+#include <QTableWidgetItem>
 #include <QDebug>
 #include <QRandomGenerator>
+#include <QVector>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,7 +30,8 @@ private slots:
     void on_createRandomMatrix_clicked();
     void on_calculateDeterminant_clicked();
 
-    void recreate_matrix(void);
+    void recreateMatrix(void);
+    void calculateDeterminant(void);
 
 private:
     Ui::MainWindow *ui;
