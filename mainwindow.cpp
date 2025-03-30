@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setWindowTitle("MFA501 Assessment 2A");
+    setWindowTitle("MFA501 Assessment 2A - Ahmet Cihan AKINCA");
 
     connect(ui->createMatrixButton, SIGNAL(clicked(bool)), this, SLOT(on_createMatrixButton_clicked()));
     connect(ui->createZeroMatrix, SIGNAL(clicked(bool)), this, SLOT(on_createZeroMatrix_clicked()));
@@ -17,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->createRandomMatrix, SIGNAL(clicked(bool)), this, SLOT(on_createRandomMatrix_clicked()));
     connect(ui->calculateDeterminant, SIGNAL(clicked(bool)), this, SLOT(on_calculateDeterminant_clicked()));
     connect(ui->calculateDeterminant, SIGNAL(clicked(bool)), this, SLOT(calculateDeterminant()));
+    connect(ui->calculateEigenvalues, SIGNAL(clicked(bool)), this, SLOT(on_calculateEigenvalues_clicked()));
+
 }
 void MainWindow::recreateMatrix(void){
     if (matrixWidget) {

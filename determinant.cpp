@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-// Recursive determinant hesaplayan fonksiyon
+// Recursive determinant calculation
 double determinant(const QVector<QVector<double>> &mat) {
     int size = mat.size();
     if (size == 1) return mat[0][0];
@@ -26,7 +26,7 @@ double determinant(const QVector<QVector<double>> &mat) {
 
 void MainWindow::calculateDeterminant() {
     if (!matrixWidget) {
-        qDebug() << "Please initilize the matrix first";    //just for crash protection
+        QMessageBox::warning(this, "Error", "Please initialize the matrix first!");
         return;
     }
     int n = ui->spinBox->value();

@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     determinant.cpp \
+    eigenvalues.cpp \
     main.cpp \
     mainwindow.cpp
 
