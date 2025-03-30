@@ -250,12 +250,12 @@ Matrix</string>
       <x>760</x>
       <y>80</y>
       <width>300</width>
-      <height>71</height>
+      <height>111</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="text">
@@ -271,12 +271,12 @@ Matrix</string>
       <x>760</x>
       <y>250</y>
       <width>300</width>
-      <height>71</height>
+      <height>111</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="text">

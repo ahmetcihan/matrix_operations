@@ -8,7 +8,7 @@
 #include <QRandomGenerator>
 #include <QVector>
 #include <QMessageBox>
-#include <cmath>
+#include <QtMath>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,14 +25,19 @@ public:
 private:
     Ui::MainWindow *ui;
     QTableWidget *matrixWidget = nullptr;
+    QVector<double> m_eigenvalues;
 
     QVector<double> computeEigenvalues();
+    QVector<QVector<double>> computeEigenvectors(const QVector<double>& eigenvalues);
     void qrDecomposition(const QVector<QVector<double>>& A,
                            QVector<QVector<double>>& Q,
                            QVector<QVector<double>>& R);
     QVector<QVector<double>> multiplyMatrices(const QVector<QVector<double>>& A,
                                             const QVector<QVector<double>>& B);
-
+    QVector<double> solveLinearSystem(QVector<QVector<double>> A, QVector<double> b);
+    void normalizeVector(QVector<double>& vec);
+    void normalizeSecondComponent(QVector<double>& vec);
+    double vectorDistance(const QVector<double>& v1, const QVector<double>& v2);
 
 private slots:
     void on_createMatrixButton_clicked();
@@ -47,6 +52,6 @@ private slots:
     void calculateDeterminant(void);
 
     void on_calculateEigenvalues_clicked();
-
+    void on_calculateEigenvectors_clicked();
 };
 #endif // MAINWINDOW_H

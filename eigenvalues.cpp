@@ -53,7 +53,7 @@ QVector<double> MainWindow::computeEigenvalues() {
     // Diagonal elements are eigenvalues
     QVector<double> eigenvalues(n);
     for (int i = 0; i < n; ++i) eigenvalues[i] = A[i][i];
-
+    m_eigenvalues = eigenvalues;
     return eigenvalues;
 }
 void MainWindow::qrDecomposition(const QVector<QVector<double>>& A,
