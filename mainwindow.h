@@ -29,12 +29,12 @@ private:
 
     QVector<double> computeEigenvalues();
     QVector<QVector<double>> computeEigenvectors(const QVector<double>& eigenvalues);
-    void qrDecomposition(const QVector<QVector<double>>& A,
-                           QVector<QVector<double>>& Q,
-                           QVector<QVector<double>>& R);
-    QVector<QVector<double>> multiplyMatrices(const QVector<QVector<double>>& A,
-                                            const QVector<QVector<double>>& B);
+    QVector<QVector<QVector<double>>> computeEigenspaces(const QVector<double>& eigenvalues);
+
     QVector<double> solveLinearSystem(QVector<QVector<double>> A, QVector<double> b);
+    QVector<QVector<double>> multiplyMatrices(const QVector<QVector<double>>& A, const QVector<QVector<double>>& B);
+
+    void qrDecomposition(const QVector<QVector<double>>& A, QVector<QVector<double>>& Q, QVector<QVector<double>>& R);
     void normalizeVector(QVector<double>& vec);
     void normalizeSecondComponent(QVector<double>& vec);
     double vectorDistance(const QVector<double>& v1, const QVector<double>& v2);
@@ -53,5 +53,6 @@ private slots:
 
     void on_calculateEigenvalues_clicked();
     void on_calculateEigenvectors_clicked();
+    void on_calculateEigenspaces_clicked();
 };
 #endif // MAINWINDOW_H

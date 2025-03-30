@@ -9,8 +9,8 @@ void MainWindow::on_calculateEigenvalues_clicked() {
 
     QVector<double> eigenvalues = computeEigenvalues();
     if (eigenvalues.isEmpty()){
-        ui->labelEigenvalues->setText("<span style='color:red;'>Eigenvalues not available</span>");
-    return;
+        QMessageBox::warning(this, "Error", "Eigenvalues not available");
+        return;
     }
 
     //Show results
@@ -18,7 +18,8 @@ void MainWindow::on_calculateEigenvalues_clicked() {
     for (int i = 0; i < eigenvalues.size(); ++i) {
         result += QString("λ%1: %2\n").arg(i+1).arg(eigenvalues[i], 0, 'f', 4);
     }
-    ui->labelEigenvalues->setText(result);
+    ui->textEditEigenvalues->setPlainText(result);
+    ui->textEditEigenvalues->moveCursor(QTextCursor::Start);
 }
 
 QVector<double> MainWindow::computeEigenvalues() {

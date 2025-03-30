@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     determinant.cpp \
+    eigenspaces.cpp \
     eigenvalues.cpp \
     eigenvectors.cpp \
     main.cpp \

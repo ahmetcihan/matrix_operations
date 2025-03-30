@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->calculateDeterminant, SIGNAL(clicked(bool)), this, SLOT(on_calculateDeterminant_clicked()));
     connect(ui->calculateDeterminant, SIGNAL(clicked(bool)), this, SLOT(calculateDeterminant()));
     connect(ui->calculateEigenvalues, SIGNAL(clicked(bool)), this, SLOT(on_calculateEigenvalues_clicked()));
+    connect(ui->calculateEigenvectors, SIGNAL(clicked(bool)), this, SLOT(on_calculateEigenvectors_clicked()));
+    connect(ui->calculateEigenspaces, SIGNAL(clicked(bool)), this, SLOT(on_calculateEigenspaces_clicked()));
 
 }
 void MainWindow::recreateMatrix(void){

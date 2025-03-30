@@ -16,10 +16,10 @@ void MainWindow::on_calculateEigenvectors_clicked() {
         for (int j = 0; j < eigenvectors[i].size(); ++j) {
             components << QString::number(eigenvectors[i][j], 'f', 4);
         }
-        results << QString("EVec for λ%1: [ %2 ]").arg(i+1).arg(components.join(" "));
+        results << QString("EV for λ%1: [ %2 ]").arg(i+1).arg(components.join(" "));
     }
-    ui->labelEigenvectors->setText(results.join("\n"));
-}
+     ui->textEditEigenvectors->setPlainText(results.join("\n"));
+     ui->textEditEigenvectors->moveCursor(QTextCursor::Start);}
 
 QVector<QVector<double>> MainWindow::computeEigenvectors(const QVector<double>& eigenvalues) {
     int n = ui->spinBox->value();
